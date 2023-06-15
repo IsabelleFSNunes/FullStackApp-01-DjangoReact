@@ -32,9 +32,9 @@ jobs:
       run: |
         python ./DjangoReact/manage.py makemigrations
         python ./DjangoReact/manage.py migrate
-    - name: Execute Django Collect Static
-      run: |
-        python ./DjangoReact/manage.py collectstatic --noinput
+    # - name: Execute Django Collect Static
+    #   run: |
+    #     python ./DjangoReact/manage.py collectstatic --noinput
     - name: Execute Django Runserver
       run: |
         python ./DjangoReact/manage.py runserver
