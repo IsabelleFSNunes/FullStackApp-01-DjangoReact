@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  # Postgres
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  web:
+    build:
+      context: .
+      dockerfile: ./DjangoReact/Dockerfile
+    # command: ["./home/DjangoReact/run_web.sh"]
+    # volumes:
+    #   - .:/home
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    depends_on:
+      - db
