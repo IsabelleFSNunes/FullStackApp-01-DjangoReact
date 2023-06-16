@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
 
-  web:
+  django-back:
     build:
       context: .
       dockerfile: ./DjangoReact/Dockerfile
@@ -22,3 +22,17 @@ services:
       - db
     depends_on:
       - db
+  
+  react-front:
+    build:
+      context: .
+      dockerfile: ./my-app/Dockerfile
+    # command: ["./home/DjangoReact/run_web.sh"]
+    # volumes:
+    #   - .:/home
+    ports:
+      - "3000:80"
+    links:
+      - django-back
+    depends_on:
+      - django-back
