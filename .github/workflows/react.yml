@@ -29,4 +29,5 @@ jobs:
       - name: npm ci, build and test
         run: |
           cd my-app
+          npm install
           npm run build
